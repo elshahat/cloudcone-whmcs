@@ -11,7 +11,7 @@ use WHMCS\Database\Capsule;
 
 require_once 'loader.php';
 
-function cloudcone_MetaData() {
+function atvps_MetaData() {
     return array(
         'DisplayName' => 'CloudCone',
         'APIVersion' => '1.0',
@@ -20,7 +20,7 @@ function cloudcone_MetaData() {
     );
 }
 
-function cloudcone_createTables() {
+function atvps_createTables() {
     $pdo = Capsule::connection()->getPdo();
     $pdo->query("CREATE TABLE IF NOT EXISTS `mod_cloudcone` (
         `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -32,15 +32,15 @@ function cloudcone_createTables() {
         return true;
     } else {
         return array(
-			'error' => sprintf( $_LANG['ccone']['table_create_error'], 'mod_cloudcone' )
+			'error' => sprintf( $_LANG['atvps']['table_create_error'], 'mod_cloudcone' )
 		);
     }
 }
 
-function cloudcone_ConfigOptions($params) {
+function atvps_ConfigOptions($params) {
     global $_LANG;
 
-    $create_tables = cloudcone_createTables();
+    $create_tables = atvps_createTables();
     if(isset($create_tables['error'])) {
 		return array(
 			sprintf(
@@ -52,47 +52,47 @@ function cloudcone_ConfigOptions($params) {
 
     $cc_scripts = cloudcone_get_product_scripts();
     return array(
-        $_LANG['ccone']['cpu'] => array(
+        $_LANG['atvps']['cpu'] => array(
             'Type' => 'text',
             'Size' => '2',
-            'Description' => $_LANG['ccone']['cpu_description'],
+            'Description' => $_LANG['atvps']['cpu_description'],
             'SimpleMode' => true,
         ),
-        $_LANG['ccone']['ram'] => array(
+        $_LANG['atvps']['ram'] => array(
             'Type' => 'text',
             'Size' => '6',
-            'Description' => $_LANG['ccone']['ram_description'],
+            'Description' => $_LANG['atvps']['ram_description'],
             'SimpleMode' => true,
         ),
-        $_LANG['ccone']['disk'] => array(
+        $_LANG['atvps']['disk'] => array(
             'Type' => 'text',
             'Size' => '6',
-            'Description' => $_LANG['ccone']['disk_description'],
+            'Description' => $_LANG['atvps']['disk_description'],
             'SimpleMode' => true,
         ),
-        $_LANG['ccone']['plan'] => array(
+        $_LANG['atvps']['plan'] => array(
             'Type' => 'text',
             'Size' => '6',
-            'Description' => $_LANG['ccone']['plan_description'],
+            'Description' => $_LANG['atvps']['plan_description'],
             'SimpleMode' => true,
         ),
-        $_LANG['ccone']['hypervisor'] => array(
+        $_LANG['atvps']['hypervisor'] => array(
             'Type' => 'text',
             'Size' => '32',
-            'Loader' => 'cloudcone_GetHypervisorList',
-            'Description' => $_LANG['ccone']['hypervisor_description'],
+            'Loader' => 'atvps_GetHypervisorList',
+            'Description' => $_LANG['atvps']['hypervisor_description'],
             'Default' => '0',
             'SimpleMode' => true,
         ),
         'Configurable Options' => array(
             'Type' => 'text',
-            'Description' => $_LANG['ccone']['generate_config_notice']."\n".$cc_scripts,
+            'Description' => $_LANG['atvps']['generate_config_notice']."\n".$cc_scripts,
             'SimpleMode' => true,
         )
     );
 }
 
-function cloudcone_GetHypervisorList() {
+function atvps_GetHypervisorList() {
     $hypervisor_list = array('0' => 'CloudCone Public');
 
     try {
@@ -127,12 +127,12 @@ function cloudcone_GetHypervisorList() {
     return $hypervisor_list;
 }
 
-function cloudcone_CreateAccount(array $params) {
+function atvps_CreateAccount(array $params) {
     try {
         $product = $params['model']['product'];
 
         $cloudcone = new CloudConeAPI($params['serverusername'], $params['serverpassword']);
-        $create_compute = json_decode($cloudcone->computeCreate($params['customfields']['cchost'], (int)$product['configoption1'], (int)$product['configoption2'], (int)$product['configoption3'], 1, (int)$params['configoptions']['Operating System'], 0, 0, 'off', $product['configoption4'], $product['configoption5']), true);
+        $create_compute = json_decode($cloudcone->computeCreate($params['customfields']['cchost'], (int)$product['configoption1'], (int)$product['configoption2'], (int)$product['configoption3'], 1, (int)$params['configoptions']['نظام التشغيل'], 0, 0, 'off', $product['configoption4'], $product['configoption5']), true);
 
         $serviceid = $params['serviceid'];
         $root_pass = encrypt($create_compute['__data']['root_password']);
@@ -161,7 +161,7 @@ function cloudcone_CreateAccount(array $params) {
     return 'success';
 }
 
-function cloudcone_SuspendAccount(array $params) {
+function atvps_SuspendAccount(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -183,7 +183,7 @@ function cloudcone_SuspendAccount(array $params) {
     return 'success';
 }
 
-function cloudcone_UnsuspendAccount(array $params) {
+function atvps_UnsuspendAccount(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -205,7 +205,7 @@ function cloudcone_UnsuspendAccount(array $params) {
     return 'success';
 }
 
-function cloudcone_TerminateAccount(array $params) {
+function atvps_TerminateAccount(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -227,7 +227,7 @@ function cloudcone_TerminateAccount(array $params) {
     return 'success';
 }
 
-function cloudcone_Boot($params) {
+function atvps_Boot($params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -249,7 +249,7 @@ function cloudcone_Boot($params) {
     return 'success';
 }
 
-function cloudcone_Reboot($params) {
+function atvps_Reboot($params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -271,7 +271,7 @@ function cloudcone_Reboot($params) {
     return 'success';
 }
 
-function cloudcone_Shutdown($params) {
+function atvps_Shutdown($params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -293,7 +293,7 @@ function cloudcone_Shutdown($params) {
     return 'success';
 }
 
-function cloudcone_Reinstall($params) {
+function atvps_Reinstall($params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -320,7 +320,7 @@ function cloudcone_Reinstall($params) {
     return 'success';
 }
 
-function cloudcone_ResetRootPassword(array $params) {
+function atvps_ResetRootPassword(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
         $cloudcone = new CloudConeAPI($params['serverusername'], $params['serverpassword']);
@@ -349,7 +349,7 @@ function cloudcone_ResetRootPassword(array $params) {
     return 'success';
 }
 
-function cloudcone_ChangePackage(array $params) {
+function atvps_ChangePackage(array $params) {
     try {
         $serviceid = $params['serviceid'];
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
@@ -372,7 +372,7 @@ function cloudcone_ChangePackage(array $params) {
     return 'success';
 }
 
-function cloudcone_ClientAreaCustomButtonArray() {
+function atvps_ClientAreaCustomButtonArray() {
     return array(
         "Boot" => "Boot",
         "Reboot" => "Reboot",
@@ -382,13 +382,13 @@ function cloudcone_ClientAreaCustomButtonArray() {
     );
 }
 
-function cloudcone_AdminCustomButtonArray() {
+function atvps_AdminCustomButtonArray() {
     return array(
         "Reset Root Password" => "ResetRootPassword",
     );
 }
 
-function cloudcone_AdminServicesTabFields(array $params) {
+function atvps_AdminServicesTabFields(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
 
@@ -411,7 +411,7 @@ function cloudcone_AdminServicesTabFields(array $params) {
     return array();
 }
 
-function cloudcone_AdminServicesTabFieldsSave(array $params) {
+function atvps_AdminServicesTabFieldsSave(array $params) {
     $originalFieldValue = isset($_REQUEST['cloudcone_original_instanceid'])
         ? $_REQUEST['cloudcone_original_instanceid']
         : '';
@@ -436,7 +436,7 @@ function cloudcone_AdminServicesTabFieldsSave(array $params) {
     }
 }
 
-function cloudcone_ServiceSingleSignOn(array $params) {
+function atvps_ServiceSingleSignOn(array $params) {
     try {
         $instanceid = cloudcone_get_instanceid($params['serviceid']);
         $redirectTo = "https://app.cloudcone.com/compute/$instanceid/manage";
@@ -461,7 +461,7 @@ function cloudcone_ServiceSingleSignOn(array $params) {
     }
 }
 
-function cloudcone_ClientArea(array $params) {
+function atvps_ClientArea(array $params) {
     $requestedAction = isset($_REQUEST['customAction']) ? $_REQUEST['customAction'] : '';
 
     try {

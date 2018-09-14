@@ -3,13 +3,13 @@
         <input type="hidden" name="id" value="{$serviceid}" />
         <button type="submit" class="btn btn-default">{$LANG.clientareabacklink}</button>
     </form>
-    {$LANG.ccone.clientarea_rebuild_title}
+    {$LANG.atvps.clientarea_rebuild_title}
 </h2>
 
 <br>
 
 <div class="alert alert-info">
-    {$LANG.ccone.clientarea_rebuild_notice}
+    {$LANG.atvps.clientarea_rebuild_notice}
 </div>
 
 <hr>
@@ -25,7 +25,7 @@
     </div>
     <div>
         <font color="red">
-            <span class="fa fa-warning"></span> {$LANG.ccone.clientarea_rebuild_alert}
+            <span class="fa fa-warning"></span> {$LANG.atvps.clientarea_rebuild_alert}
         </font>
     </div>
     <input type="hidden" name="id" value="{$serviceid}" />
@@ -33,7 +33,7 @@
     <input type="hidden" name="customAction" value="rebuild" />
     <input type="hidden" name="a" value="Reinstall" />
     <button type="submit" class="btn btn-info btn-fill">
-        {$LANG.ccone.clientarea_action_rebuild}
+        {$LANG.atvps.clientarea_action_rebuild}
     </button>
 </form>
 <hr>

@@ -1,0 +1,21 @@
+/* Product Details */
+.atvps-server-info label + h4 {
+    margin-top: 0;
+}
+.atvps-server-info label {
+    margin-top: 10px;
+}
+.atvps-server-info label {
+    margin-top: 10px;
+}
+.atvps-server-info .progress.has-description {
+    margin-bottom: 0;
+}
+.atvps-server-info .progress .description {
+    margin-bottom: 10px;
+}
+
+/* Charts */
+.atvps-chart {
+    margin-bottom: 30px;
+}

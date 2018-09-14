@@ -70,9 +70,9 @@ function cloudcone_get_product_scripts() {
     }
 
     $('.module-settings tr .fieldlabel:contains(\"Configurable Options\") + .fieldarea input[type=text]').remove();
-	$('.module-settings tr .fieldlabel:contains(\"Configurable Options\") + .fieldarea').prepend('<a href=\"#\"id=\"ccone-generate-config\" class=\"btn btn-info\">Generate</a>');
+	$('.module-settings tr .fieldlabel:contains(\"Configurable Options\") + .fieldarea').prepend('<a href=\"#\"id=\"atvps-generate-config\" class=\"btn btn-info\">Generate</a>');
 
-	$('form[name=\"packagefrm\"] div.tab-content div#tab3').on('click', 'a#ccone-generate-config', function (e) {
+	$('form[name=\"packagefrm\"] div.tab-content div#tab3').on('click', 'a#atvps-generate-config', function (e) {
 		$.post(\"../modules/servers/cloudcone/actions.php\", {productID: getQueryParam('id'), cloudcone_action: 'cloudcone_configure'}, function (data) {
             if (data.__data.reload !== undefined) {
                 location.reload();

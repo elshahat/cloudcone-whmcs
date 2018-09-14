@@ -1,4 +1,4 @@
-<link href="modules/servers/cloudcone/css/client.css" rel="stylesheet">
+<link href="modules/servers/atvps/css/client.css" rel="stylesheet">
 <div class="product-details clearfix">
     <div class="row">
         <div class="col-md-6">
@@ -45,14 +45,14 @@
             <h4>{$LANG.orderpaymentmethod}</h4>
             {$paymentmethod}
 
-            <h4>{$LANG.ccone.status}</h4>
+            <h4>{$LANG.atvps.status}</h4>
             {$instance.status|capitalize}
         </div>
     </div>
 
     <hr>
-    <h3>{$LANG.ccone.clientarea_actions_title}</h3>
-    <div class="ccone-server-actions">
+    <h3>{$LANG.atvps.clientarea_actions_title}</h3>
+    <div class="atvps-server-actions">
         <div class="row">
             <div class="col-sm-4">
                 <form method="post" action="clientarea.php?action=productdetails">
@@ -60,7 +60,7 @@
                     <input type="hidden" name="modop" value="custom" />
                     <input type="hidden" name="a" value="Boot" />
                     <button type="submit" class="btn btn-info btn-fill btn-block">
-                        {$LANG.ccone.clientarea_action_boot}
+                        {$LANG.atvps.clientarea_action_boot}
                     </button>
                 </form>
             </div>
@@ -70,7 +70,7 @@
                     <input type="hidden" name="modop" value="custom" />
                     <input type="hidden" name="a" value="Reboot" />
                     <button type="submit" class="btn btn-info btn-fill btn-block">
-                        {$LANG.ccone.clientarea_action_reboot}
+                        {$LANG.atvps.clientarea_action_reboot}
                     </button>
                 </form>
             </div>
@@ -80,7 +80,7 @@
                     <input type="hidden" name="modop" value="custom" />
                     <input type="hidden" name="a" value="Shutdown" />
                     <button type="submit" class="btn btn-info btn-fill btn-block">
-                        {$LANG.ccone.clientarea_action_shutdown}
+                        {$LANG.atvps.clientarea_action_shutdown}
                     </button>
                 </form>
             </div>
@@ -88,15 +88,15 @@
     </div>
 
     <hr>
-    <h3>{$LANG.ccone.clientarea_details_title}</h3>
-    <div class="ccone-server-info">
+    <h3>{$LANG.atvps.clientarea_details_title}</h3>
+    <div class="atvps-server-info">
         <div class="row">
             <div class="col-md-6">
                 <label>{$LANG.serverhostname}</label>
                 <h4>{$instance.hostname}</h4>
             </div>
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_password}</label> <button id="root-pass-toggle" class="btn btn-default btn-xs">{$LANG.ccone.clientarea_password_toggle}</button>
+                <label>{$LANG.atvps.clientarea_password}</label> <button id="root-pass-toggle" class="btn btn-default btn-xs">{$LANG.atvps.clientarea_password_toggle}</button>
                 <h4 id="root-pass" class="hidden">{$instance.password}</h4>
             </div>
         </div>
@@ -106,52 +106,52 @@
                 <h4>{$instance.mainip}</h4>
             </div>
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_os}</label>
+                <label>{$LANG.atvps.clientarea_os}</label>
                 <h4>{$instance.template}</h4>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_cpu}</label>
-                <h4>{$instance.cpu} <small>{$LANG.ccone.clientarea_cpu_description}</small></h4>
+                <label>{$LANG.atvps.clientarea_cpu}</label>
+                <h4>{$instance.cpu} <small>{$LANG.atvps.clientarea_cpu_description}</small></h4>
             </div>
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_ram}</label>
-                <h4>{$instance.ram} <small>{$LANG.ccone.clientarea_ram_description}</small></h4>
+                <label>{$LANG.atvps.clientarea_ram}</label>
+                <h4>{$instance.ram} <small>{$LANG.atvps.clientarea_ram_description}</small></h4>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_bandwidth}</label>
+                <label>{$LANG.atvps.clientarea_bandwidth}</label>
                 <div class="progress has-description">
                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$instance.bandwidth.usage}" aria-valuemin="0" aria-valuemax="100" style="width: {$instance.bandwidth.usage}%;">
                         <span class="sr-only">{$instance.bandwidth.usage}% Used</span>
                     </div>
                 </div>
-                <small class="description text-muted">{$LANG.ccone.clientarea_bandwidth_description|sprintf:{$instance.bandwidth.used}:{$instance.bandwidth.total}}</small>
+                <small class="description text-muted">{$LANG.atvps.clientarea_bandwidth_description|sprintf:{$instance.bandwidth.used}:{$instance.bandwidth.total}}</small>
             </div>
             <div class="col-md-6">
-                <label>{$LANG.ccone.clientarea_disk}</label>
-                <h4>{$instance.disk.total} <small>{$LANG.ccone.clientarea_disk_description}</small></h4>
+                <label>{$LANG.atvps.clientarea_disk}</label>
+                <h4>{$instance.disk.total} <small>{$LANG.atvps.clientarea_disk_description}</small></h4>
             </div>
         </div>
     </div>
 
     <hr>
-    <div class="ccone-server-buttons">
+    <div class="atvps-server-buttons">
         <div class="row">
             <div class="col-sm-3">
                 <form method="post" action="clientarea.php?action=productdetails">
                     <input type="hidden" name="id" value="{$serviceid}" />
                     <input type="hidden" name="customAction" value="graphs" />
                     <button type="submit" class="btn btn-default btn-fill btn-block">
-                        <span class="fa fa-bar-chart"></span> {$LANG.ccone.clientarea_viewgraphs}
+                        <span class="fa fa-bar-chart"></span> {$LANG.atvps.clientarea_viewgraphs}
                     </button>
                 </form>
             </div>
             <div class="col-sm-3">
-                <button type="button" class="btn btn-default btn-fill btn-block" onClick="window.open('modules/servers/cloudcone/vnc.php?id={$serviceid}','_blank','width=800,height=600,status=no,location=no,toolbar=no,menubar=no')">
-                    <span class="fa fa-terminal"></span> {$LANG.ccone.clientarea_viewconsole}
+                <button type="button" class="btn btn-default btn-fill btn-block" onClick="window.open('modules/servers/atvps/vnc.php?id={$serviceid}','_blank','width=800,height=600,status=no,location=no,toolbar=no,menubar=no')">
+                    <span class="fa fa-terminal"></span> {$LANG.atvps.clientarea_viewconsole}
                 </button>
             </div>
             <div class="col-sm-3">
@@ -159,7 +159,7 @@
                     <input type="hidden" name="id" value="{$serviceid}" />
                     <input type="hidden" name="customAction" value="resetroot" />
                     <button type="submit" class="btn btn-warning btn-fill btn-block">
-                        <span class="fa fa-warning"></span> {$LANG.ccone.clientarea_viewresetroot}
+                        <span class="fa fa-warning"></span> {$LANG.atvps.clientarea_viewresetroot}
                     </button>
                 </form>
             </div>
@@ -168,7 +168,7 @@
                     <input type="hidden" name="id" value="{$serviceid}" />
                     <input type="hidden" name="customAction" value="rebuild" />
                     <button type="submit" class="btn btn-danger btn-fill btn-block">
-                        <span class="fa fa-warning"></span> {$LANG.ccone.clientarea_viewrebuild}
+                        <span class="fa fa-warning"></span> {$LANG.atvps.clientarea_viewrebuild}
                     </button>
                 </form>
             </div>

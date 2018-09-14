@@ -1,23 +1,23 @@
-<link href="modules/servers/cloudcone/css/client.css" rel="stylesheet">
-<script type="text/javascript" src="modules/servers/cloudcone/js/chart.bundle.min.js"></script>
+<link href="modules/servers/atvps/css/client.css" rel="stylesheet">
+<script type="text/javascript" src="modules/servers/atvps/js/chart.bundle.min.js"></script>
 
 <h2>
     <form method="post" action="clientarea.php?action=productdetails" style="display: inline-block;">
         <input type="hidden" name="id" value="{$serviceid}" />
         <button type="submit" class="btn btn-default">{$LANG.clientareabacklink}</button>
     </form>
-    {$LANG.ccone.clientarea_graphs_title}
+    {$LANG.atvps.clientarea_graphs_title}
 </h2>
 
-<div class="ccone-chart" style="width:100%;height:300px">
+<div class="atvps-chart" style="width:100%;height:300px">
     <canvas id="cpu-chart"></canvas>
 </div>
 
-<div class="ccone-chart" style="width:100%;height:300px">
+<div class="atvps-chart" style="width:100%;height:300px">
     <canvas id="net-chart"></canvas>
 </div>
 
-<div class="ccone-chart" style="width:100%;height:300px">
+<div class="atvps-chart" style="width:100%;height:300px">
     <canvas id="io-chart"></canvas>
 </div>
 

@@ -5,7 +5,7 @@ require_once 'loader.php';
 $ca = new WHMCS_ClientArea();
 if (!$ca->isLoggedIn()) {
     if ((!isset($_SESSION['adminid']) || ((int)$_SESSION['adminid'] <= 0))) {
-        die('<div class="alert alert-danger">' . $_LANG['ccone']['unauthorized'] . '</div></body>');
+        die('<div class="alert alert-danger">' . $_LANG['atvps']['unauthorized'] . '</div></body>');
     }
     $uid = (int)$_GET['uid'];
 } else {
@@ -15,7 +15,7 @@ if (!$ca->isLoggedIn()) {
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $serviceid = $_GET['id'];
 } else {
-    die('<div class="alert alert-danger">' . $_LANG['ccone']['unauthorized'] . '</div></body>');
+    die('<div class="alert alert-danger">' . $_LANG['atvps']['unauthorized'] . '</div></body>');
 }
 
 $params = cloudcone_get_service_params($serviceid, $uid);
